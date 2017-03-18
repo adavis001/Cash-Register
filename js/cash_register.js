@@ -20,8 +20,7 @@ displayScreen.appendChild(price);
 //DIsplays item quantity.  Increase quantity via + and - buttons.
 var quantScreen = document.getElementById("quantityDisplay");
 var quant = document.createElement("div");
-quant.innerHTML = 1;
-q = quant.innerHTML;
+quant.innerHTML = 0;
 quant.id = "quantity";
 quantScreen.appendChild(quant);
 var moreBut = document.createElement("button");
@@ -34,6 +33,7 @@ var lessBut = document.createElement("button");
 lessBut.innerHTML = "-";
 lessBut.addEventListener('click', function(event){
 	quant.innerHTML--; 
+	totalP.innerHTML = price.innerHTML * quant.innerHTML;
 });
 quantScreen.appendChild(moreBut); quantScreen.appendChild(lessBut); 
 
@@ -56,7 +56,7 @@ for (var i = 0; i< numBtns; i++) {
 //Total Price of Item multiplied by quantity purchased.
 var totalPrice = document.getElementById("priceTotal");
 var totalP = document.createElement("button");
-totalP.innerHTML = 0;
+totalP.innerHTML = price.innerHTML * quant.innerHTML;
 totalP.id = "TP";
 totalPrice.appendChild(totalP);
 
@@ -96,6 +96,7 @@ opBtn9.innerHTML = "Clear Price";
 	opBtn9.addEventListener('click', function(event){
 		price.innerHTML = "";
 		quant.innerHTML = 1;
+		totalP.innerHTML = 0;
 });
 
 
