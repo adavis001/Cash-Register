@@ -28,10 +28,7 @@ var moreBut = document.createElement("button");
 moreBut.innerHTML = "+";
 moreBut.addEventListener('click', function(event){
 	quant.innerHTML++;
-	console.log(quant.innerHTML);
-	console.log(price.innerHTML);
-	console.log(q);
-	console.log(totalP.innerHTML = p * quant.innerHTML);
+	totalP.innerHTML = price.innerHTML * quant.innerHTML;
 });
 var lessBut = document.createElement("button");
 lessBut.innerHTML = "-";
@@ -98,7 +95,7 @@ opBtn8.innerHTML = "Withdrawl Cash";
 opBtn9.innerHTML = "Clear Price";
 	opBtn9.addEventListener('click', function(event){
 		price.innerHTML = "";
-		answer.innerHTML = "";
+		quant.innerHTML = 1;
 });
 
 
