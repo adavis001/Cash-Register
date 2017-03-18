@@ -1,14 +1,3 @@
-
-
-
-//Whats this for?  DO I still need this?  Re-purpose to Item total.
-// var answerScreen = document.getElementById("display");
-// var answer = document.createElement("div");
-// answer.innerHTML = "";
-// a = answer.innerHTML;
-// answer.id = "answer";
-// answerScreen.appendChild(answer);
-
 //Displays price of item.  Use buttons to add price to.
 var displayScreen = document.getElementById("display");
 var price = document.createElement("div");
@@ -27,7 +16,7 @@ var moreBut = document.createElement("button");
 moreBut.innerHTML = "+";
 moreBut.addEventListener('click', function(event){
 	quant.innerHTML++;
-	totalP.innerHTML = price.innerHTML * quant.innerHTML;
+	totalP.innerHTML = (price.innerHTML * quant.innerHTML).toFixed(2);
 });
 var lessBut = document.createElement("button");
 lessBut.innerHTML = "-";
@@ -40,7 +29,7 @@ quantScreen.appendChild(moreBut); quantScreen.appendChild(lessBut);
 
 //Glorious buttons!  Numbered buttons used to input price.
 var btnBox = document.getElementById("calculator");
-var numBtns = 10;
+var numBtns = 11;
 
 for (var i = 0; i< numBtns; i++) {
 	var btn = document.createElement("button");
@@ -51,6 +40,9 @@ for (var i = 0; i< numBtns; i++) {
 	});
 	btnBox.appendChild(btn);
 }
+btn10.innerHTML = ".";
+
+
 
 //Total Price of Item multiplied by quantity purchased.  
 //Add a button that adds number to grand total.
@@ -71,16 +63,18 @@ var addToTotal = document.createElement("button");
 addToTotal.innerHTML = "Add to Grand Total";
 addToTotal.id = "totally";
 addToTotal.addEventListener('click', function(event){
-	cart.innerHTML = Number(totalP.innerHTML) + Number(cart.innerHTML);
-	console.log(typeof cart.innerHTML);
+	cart.innerHTML = (Number(totalP.innerHTML) + Number(cart.innerHTML)).toFixed(2);
+	price.innerHTML = "";
+	quant.innerHTML = 0;
+	totalP.innerHTML = 0;
 });
 totalPrice.appendChild(addToTotal);
 
 
 
 // Operation buttons.  Some of these may be unnecessary.  Clean them up as needed.
-var opBox = document.getElementById("calculator");
-var numOfBtns = 10;
+var opBox = document.getElementById("balance");
+var numOfBtns = 4;
 
 
 for (var i = 0; i< numOfBtns; i++) {
@@ -93,25 +87,11 @@ for (var i = 0; i< numOfBtns; i++) {
 	opBox.appendChild(opBtn);
 }
 
-opBtn0.innerHTML = ".";
-	opBtn0.addEventListener('click', function(event){
-		price.innerHTML += event.target.innerHTML;
-});
-	//addition button unnecessary?  Remove later.
-opBtn1.innerHTML = "+";
-	opBtn1.addEventListener('click', function(event){
-		var additive = parseFloat(dScreen.innerHTML);
-		answer.innerHTML += myCalc.add(additive);
-	});
-opBtn2.innerHTML = "-";
-opBtn3.innerHTML = "*";
-opBtn4.innerHTML = "/";
-opBtn5.innerHTML = "=";
-opBtn6.innerHTML = "Get Balance";
-opBtn7.innerHTML = "Deposit Cash";
-opBtn8.innerHTML = "Withdrawl Cash";
-opBtn9.innerHTML = "Clear Price";
-	opBtn9.addEventListener('click', function(event){
+opBtn0.innerHTML = "Get Balance";
+opBtn1.innerHTML = "Deposit Cash";
+opBtn2.innerHTML = "Withdrawl Cash";
+opBtn3.innerHTML = "Clear Price";
+	opBtn3.addEventListener('click', function(event){
 		price.innerHTML = "";
 		quant.innerHTML = 0;
 		totalP.innerHTML = 0;
