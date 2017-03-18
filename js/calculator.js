@@ -66,5 +66,5 @@ var calculatorModule = (function() {
 });
 
 var myCalc = calculatorModule();
-myCalc.load(9000);
+// myCalc.load(9000);
 console.log(myCalc.getTotal());
