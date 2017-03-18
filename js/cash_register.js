@@ -48,17 +48,35 @@ for (var i = 0; i< numBtns; i++) {
 	btn.id = "btn"+i;
 	btn.addEventListener('click', function(event){
 		price.innerHTML += event.target.innerHTML;
-		console.log(event.target.id);
 	});
 	btnBox.appendChild(btn);
 }
 
-//Total Price of Item multiplied by quantity purchased.
+//Total Price of Item multiplied by quantity purchased.  
+//Add a button that adds number to grand total.
+//Create a div to append into Grand Total.  +=  Item Total.  Then Clears.
+var shoppingCart = document.getElementById("grandTotal");
+var cart = document.createElement("div");
+cart.innerHTML.id = "shopCart";
+shoppingCart.appendChild(cart);
+
+
+
 var totalPrice = document.getElementById("priceTotal");
-var totalP = document.createElement("button");
+var totalP = document.createElement("div");
 totalP.innerHTML = price.innerHTML * quant.innerHTML;
 totalP.id = "TP";
 totalPrice.appendChild(totalP);
+var addToTotal = document.createElement("button");
+addToTotal.innerHTML = "Add to Grand Total";
+addToTotal.id = "totally";
+addToTotal.addEventListener('click', function(event){
+	cart.innerHTML = Number(totalP.innerHTML) + Number(cart.innerHTML);
+	console.log(typeof cart.innerHTML);
+});
+totalPrice.appendChild(addToTotal);
+
+
 
 // Operation buttons.  Some of these may be unnecessary.  Clean them up as needed.
 var opBox = document.getElementById("calculator");
@@ -95,8 +113,9 @@ opBtn8.innerHTML = "Withdrawl Cash";
 opBtn9.innerHTML = "Clear Price";
 	opBtn9.addEventListener('click', function(event){
 		price.innerHTML = "";
-		quant.innerHTML = 1;
+		quant.innerHTML = 0;
 		totalP.innerHTML = 0;
+
 });
 
 
