@@ -1,21 +1,21 @@
 
 
 var displayButton = document.getElementById("display");
-var dButton = document.createElement("div");
-dButton.innerHTML = "display";
+var dButton = document.createElement("button");
+dButton.innerHTML = "$";
 dButton.id = "display";
 displayButton.appendChild(dButton);
 
 
 var btnBox = document.getElementById("calculator");
-var numBtns = 21;
+var numBtns = 17;
 
 for (var i = 0; i< numBtns; i++) {
 	var btn = document.createElement("button");
 	btn.innerHTML = i;
 	btn.id = "btn"+i;
 	btn.addEventListener('click', function(event){
-		dButton.innerHTML = event.target.innerHTML;
+		dButton.innerHTML += event.target.innerHTML;
 		console.log(event.target.id);
 	});
 	btnBox.appendChild(btn);
@@ -32,13 +32,33 @@ btn7.innerHTML = "7";
 btn8.innerHTML = "8";
 btn9.innerHTML = "9";
 btn10.innerHTML = "00";
-btn11.innerHTML = "Add";
-btn12.innerHTML = "Subtract";
-btn13.innerHTML = "Multiply";
-btn14.innerHTML = "Divide";
-btn15.innerHTML = "Equals";
-btn16.innerHTML = "Clear";
-btn17.innerHTML = "Get Balance";
-btn18.innerHTML = "Deposit Cash";
-btn19.innerHTML = "Withdrawl Cash";
-btn20.innerHTML = ".";
+btn11.innerHTML = ".";
+btn12.innerHTML = "+";
+btn13.innerHTML = "-";
+btn14.innerHTML = "*";
+btn15.innerHTML = "/";
+btn16.innerHTML = "=";
+
+
+var opBox = document.getElementById("calculator");
+var numOfBtns = 4;
+
+
+for (var i = 0; i< numOfBtns; i++) {
+	var opBtn = document.createElement("button");
+	opBtn.innerHTML = i;
+	opBtn.id = "opBtn"+i;
+	opBtn.addEventListener('click', function(event){
+		console.log(event.target.id);
+	});
+	opBox.appendChild(opBtn);
+}
+
+opBtn0.innerHTML = "Clear";
+opBtn0.addEventListener('click', function(event){
+	dButton.innerHTML = "$";
+});
+opBtn1.innerHTML = "Get Balance";
+opBtn2.innerHTML = "Deposit Cash";
+opBtn3.innerHTML = "Withdrawl Cash";
+
