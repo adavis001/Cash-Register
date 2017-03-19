@@ -46,7 +46,6 @@ btn10.innerHTML = ".";
 
 //Total Price of Item multiplied by quantity purchased.  
 //Add a button that adds number to grand total.
-//Create a div to append into Grand Total.  +=  Item Total.  Then Clears.
 var shoppingCart = document.getElementById("grandTotal");
 var cart = document.createElement("div");
 cart.innerHTML.id = "shopCart";
@@ -71,6 +70,17 @@ addToTotal.addEventListener('click', function(event){
 totalPrice.appendChild(addToTotal);
 
 
+//Create a div to append into Grand Total.  +=  Item Total.  Then Clears.
+// Gran Total needs  BUTTON that adds to Register Balance. (Don't display Balance)
+var toBalance = document.createElement("button");
+var balance = 0;
+toBalance.innerHTML = "Receive Payment";
+toBalance.addEventListener('click', function(event){
+	balance += Number(cart.innerHTML);
+	console.log(balance);
+});
+shoppingCart.appendChild(toBalance);
+
 
 // Operation buttons.  Some of these may be unnecessary.  Clean them up as needed.
 var opBox = document.getElementById("balance");
@@ -81,15 +91,18 @@ for (var i = 0; i< numOfBtns; i++) {
 	var opBtn = document.createElement("button");
 	opBtn.innerHTML = i;
 	opBtn.id = "opBtn"+i;
-	opBtn.addEventListener('click', function(event){
-		console.log(event.target.id);
-	});
 	opBox.appendChild(opBtn);
 }
 
 opBtn0.innerHTML = "Get Balance";
+	opBtn0.addEventListener('click', function(event){
+	});
 opBtn1.innerHTML = "Deposit Cash";
+	opBtn1.addEventListener('click', function(event){
+});
 opBtn2.innerHTML = "Withdrawl Cash";
+	opBtn2.addEventListener('click', function(event){
+});
 opBtn3.innerHTML = "Clear Price";
 	opBtn3.addEventListener('click', function(event){
 		price.innerHTML = "";
