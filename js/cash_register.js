@@ -29,7 +29,7 @@ quantScreen.appendChild(moreBut); quantScreen.appendChild(lessBut);
 
 //Glorious buttons!  Numbered buttons used to input price.
 var btnBox = document.getElementById("calculator");
-var numBtns = 11;
+var numBtns = 12;
 
 for (var i = 0; i< numBtns; i++) {
 	var btn = document.createElement("button");
@@ -40,7 +40,15 @@ for (var i = 0; i< numBtns; i++) {
 	});
 	btnBox.appendChild(btn);
 }
+
 btn10.innerHTML = ".";
+btn11.innerHTML = "Clear Price";
+	btn11.addEventListener('click', function(event){
+		price.innerHTML = "";
+		quant.innerHTML = 0;
+		totalP.innerHTML = 0;
+
+});
 
 
 
@@ -48,7 +56,8 @@ btn10.innerHTML = ".";
 //Add a button that adds number to grand total.
 var shoppingCart = document.getElementById("grandTotal");
 var cart = document.createElement("div");
-cart.innerHTML.id = "shopCart";
+cart.innerHTML = 0;
+cart.id = "sCart";
 shoppingCart.appendChild(cart);
 
 
@@ -74,43 +83,40 @@ totalPrice.appendChild(addToTotal);
 // Gran Total needs  BUTTON that adds to Register Balance. (Don't display Balance)
 var toBalance = document.createElement("button");
 var balance = 0;
-toBalance.innerHTML = "Receive Payment";
+toBalance.innerHTML = "Deposit/Withdrawl Cash";
 toBalance.addEventListener('click', function(event){
 	balance += Number(cart.innerHTML);
+	currentBalance.innerHTML = "Current Balance =$" + balance;
+	balance.innerHTML = 0;
+	cart.innerHTML = 0;
+	price.innerHTML = "";
+	quant.innerHTML = 0;
+	totalP.innerHTML = 0;
 	console.log(balance);
 });
 shoppingCart.appendChild(toBalance);
 
-
 // Operation buttons.  Some of these may be unnecessary.  Clean them up as needed.
 var opBox = document.getElementById("balance");
-var numOfBtns = 4;
+var numOfBtns = 1;
 
 
-for (var i = 0; i< numOfBtns; i++) {
-	var opBtn = document.createElement("button");
-	opBtn.innerHTML = i;
-	opBtn.id = "opBtn"+i;
-	opBox.appendChild(opBtn);
-}
-
-opBtn0.innerHTML = "Get Balance";
-	opBtn0.addEventListener('click', function(event){
-	});
-opBtn1.innerHTML = "Deposit Cash";
-	opBtn1.addEventListener('click', function(event){
-});
-opBtn2.innerHTML = "Withdrawl Cash";
-	opBtn2.addEventListener('click', function(event){
-});
-opBtn3.innerHTML = "Clear Price";
-	opBtn3.addEventListener('click', function(event){
-		price.innerHTML = "";
-		quant.innerHTML = 0;
-		totalP.innerHTML = 0;
-
-});
+var showBalance = document.getElementById("balance");
+var currentBalance = document.createElement('div');
+currentBalance.innerHTML = "Current Balance = $" + balance;
+showBalance.appendChild(currentBalance);
 
 
 
+// for (var i = 0; i< numOfBtns; i++) {
+// 	var opBtn = document.createElement("button");
+// 	opBtn.innerHTML = i;
+// 	opBtn.id = "opBtn"+i;
+// 	opBox.appendChild(opBtn);
+// }
 
+// opBtn0.innerHTML = "Balance = $" + balance;
+// 	opBtn0.addEventListener('click', function(event){
+// 		cart.innerHTML = balance;
+// 		console.log(balance);
+// 	});
