@@ -33,7 +33,13 @@ lessBut.addEventListener('click', function(event){
 	quant.innerHTML--; 
 	totalP.innerHTML = price.innerHTML * quant.innerHTML;
 });
-quantScreen.appendChild(moreBut); quantScreen.appendChild(lessBut); 
+var textBox = document.createElement("input");
+textBox.id = "Hal";
+var urlWallpaper = function() {
+	document.body.style.backgroundImage = "'url(" +document.getElementById("Hal").value +")'";
+	console.log("'url(" +document.getElementById("Hal").value +")'");
+};
+quantScreen.appendChild(moreBut); quantScreen.appendChild(lessBut); quantScreen.appendChild(textBox);
 
 
 //Glorious buttons!  Numbered buttons used to input price.
@@ -71,7 +77,7 @@ clearBtn.innerHTML = "Clear Price";
 		quant.innerHTML = 0;
 		totalP.innerHTML = 0;
 		bigButtOn.used = false;
-		changeWallpaper();
+		urlWallpaper();
 });	
 	btnBox.appendChild(clearBtn);
 
