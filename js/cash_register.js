@@ -1,3 +1,12 @@
+
+
+document.body.style.backgroundImage = "url(http://wallpapercave.com/wp/xfo0jEX.png)";
+
+var wallpapers = ["url(http://wallpapercave.com/wp/xfo0jEX.png)", "url(http://interfacelift.com/wallpaper/previews/01141_hal9000_672x420.jpg)"];
+
+function changeWallpaper() {
+		document.body.style.backgroundImage = "url(http://interfacelift.com/wallpaper/previews/01141_hal9000_672x420.jpg)";
+}
 //Displays price of item.  Use buttons to add price to.
 var displayScreen = document.getElementById("display");
 var price = document.createElement("div");
@@ -9,7 +18,7 @@ displayScreen.appendChild(price);
 //DIsplays item quantity.  Increase quantity via + and - buttons.
 var quantScreen = document.getElementById("quantityDisplay");
 var quant = document.createElement("div");
-quant.innerHTML = 0;
+quant.innerHTML = 0;	
 quant.id = "quantity";
 quantScreen.appendChild(quant);
 var moreBut = document.createElement("button");
@@ -28,8 +37,9 @@ quantScreen.appendChild(moreBut); quantScreen.appendChild(lessBut);
 
 
 //Glorious buttons!  Numbered buttons used to input price.
+//add a "." button with a beulean value.  Changes from true to false 
 var btnBox = document.getElementById("calculator");
-var numBtns = 12;
+var numBtns = 10;
 
 for (var i = 0; i< numBtns; i++) {
 	var btn = document.createElement("button");
@@ -37,18 +47,33 @@ for (var i = 0; i< numBtns; i++) {
 	btn.id = "btn"+i;
 	btn.addEventListener('click', function(event){
 		price.innerHTML += event.target.innerHTML;
+		console.log(btn.id);
 	});
 	btnBox.appendChild(btn);
 }
 
-btn10.innerHTML = ".";
-btn11.innerHTML = "Clear Price";
-	btn11.addEventListener('click', function(event){
+bigButtOn = document.createElement('button');
+bigButtOn.innerHTML = ".";
+bigButtOn.id = ".";
+bigButtOn.used = false;
+bigButtOn.addEventListener('click', function(event){
+	if(bigButtOn.used === false){
+		price.innerHTML += event.target.innerHTML;
+		bigButtOn.used = true;
+	}
+});
+	btnBox.appendChild(bigButtOn);
+
+clearBtn = document.createElement('button');
+clearBtn.innerHTML = "Clear Price";
+	clearBtn.addEventListener('click', function(event){
 		price.innerHTML = "";
 		quant.innerHTML = 0;
 		totalP.innerHTML = 0;
-
-});
+		bigButtOn.used = false;
+		changeWallpaper();
+});	
+	btnBox.appendChild(clearBtn);
 
 
 
@@ -92,11 +117,13 @@ toBalance.addEventListener('click', function(event){
 	price.innerHTML = "";
 	quant.innerHTML = 0;
 	totalP.innerHTML = 0;
+	bigButtOn.used = false;
+
 	console.log(balance);
 });
 shoppingCart.appendChild(toBalance);
 
-// Operation buttons.  Some of these may be unnecessary.  Clean them up as needed.
+// Ironically this for loop was necessary at one point...but now I just use it once.
 var opBox = document.getElementById("balance");
 var numOfBtns = 1;
 
@@ -106,17 +133,3 @@ var currentBalance = document.createElement('div');
 currentBalance.innerHTML = "Current Balance = $" + balance;
 showBalance.appendChild(currentBalance);
 
-
-
-// for (var i = 0; i< numOfBtns; i++) {
-// 	var opBtn = document.createElement("button");
-// 	opBtn.innerHTML = i;
-// 	opBtn.id = "opBtn"+i;
-// 	opBox.appendChild(opBtn);
-// }
-
-// opBtn0.innerHTML = "Balance = $" + balance;
-// 	opBtn0.addEventListener('click', function(event){
-// 		cart.innerHTML = balance;
-// 		console.log(balance);
-// 	});

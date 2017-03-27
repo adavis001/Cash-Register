@@ -3,9 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-</head>
+	<link rel="stylesheet" href="css/style.css" media= "screen">
+</head> 	
 <body>
-	<h1>Cash Register-a-tron 9000</h1>
+<h1></h1>
+<h2>CASH REGISTER 9000</h2>
+<input id="wallpaper" type="text"><button onclick="changeBackground()">Change Background</button>
+	<script type="text/javascript">
+		function changeBackground(wallpaper) {
+			document.body.style.background =  "url(http://interfacelift.com/wallpaper/previews/01141_hal9000_672x420.jpg)";
+		}
+	</script>
 	<p id="display">Item Price</p>
 	<p id="quantityDisplay">Item Quantity</p>
 	<p id="priceTotal">Item Total</p>
